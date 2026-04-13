@@ -1,14 +1,261 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-	<meta charset="UTF-g">
-	<title>Bienvenue chez Marti Meubles !</title>
-	<style>
-		body { font-family: sans-serif; text-align: center; margin-top: 50px; }
-	</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marti-Meubles | Créateur Audacieux</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Polices d'écriture : Une ronde pour les titres (proche du logo) et une lisible pour le texte -->
+    <link href="https://fonts.googleapis.com/css2?family=Chewy&family=Lora:ital,wght@0,400;0,600;1,400&family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- Icônes -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        marti: {
+                            blue: '#36829e',   /* Bleu plus clair et lumineux (type bleu canard du logo) */
+                            orange: '#FF8C00', /* Orange du fauteuil */
+                            purple: '#9B3080', /* Violet du fond */
+                            wood: '#F5E6D3',   /* Beige bois clair */
+                            darkwood: '#5D4037'
+                        }
+                    },
+                    fontFamily: {
+                        display: ['Chewy', 'cursive'], /* Pour ressembler au logo */
+                        body: ['Quicksand', 'sans-serif'],
+                        story: ['Lora', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* ==========================================================================
+           ZONE CURSEUR PERSONNALISÉ (IMAGE LOCALE)
+           ==========================================================================
+           Instruction :
+           1. Mettez votre image (ex: souris.png) dans le même dossier que ce fichier index.html
+           2. Remplacez 'souris.png' ci-dessous par le vrai nom de votre fichier.
+        */
+        body {
+            /* REMPLACEZ 'souris.png' PAR LE NOM DE VOTRE FICHIER */
+            cursor: url('rabot.png'), auto; 
+        }
+
+        /* Effet de survol sur les éléments cliquables */
+        a, button, .interactive-card {
+            /* Vous pouvez mettre une autre image pour le clic ici, ou la même */
+            cursor: url('rabot.png'), pointer;
+        }
+        
+        /* ==========================================================================
+           FIN ZONE CURSEUR
+           ==========================================================================
+        */
+
+        .wood-texture {
+            background-color: #ffffff;
+            opacity: 1;
+            background-image:  linear-gradient(135deg, #fdfbf7 25%, transparent 25%), linear-gradient(225deg, #fdfbf7 25%, transparent 25%), linear-gradient(45deg, #fdfbf7 25%, transparent 25%), linear-gradient(315deg, #fdfbf7 25%, #ffffff 25%);
+            background-position:  10px 0, 10px 0, 0 0, 0 0;
+            background-size: 20px 20px;
+            background-repeat: repeat;
+        }
+
+        .shaving-decoration {
+            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+        }
+    </style>
 </head>
-<body>
-	<h1>Bonjour mes ptites planches !</h1>
-	<p>Le site est de retour.</p>
+<body class="bg-stone-50 text-slate-800 font-body overflow-x-hidden selection:bg-marti-orange selection:text-white">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-white/90 backdrop-blur-sm shadow-sm py-4">
+        <div class="container mx-auto px-6 flex justify-between items-center">
+            <a href="#" class="text-2xl font-display text-marti-blue hover:text-marti-orange transition">Marti-Meubles</a>
+            <!-- Ajout de items-center pour l'alignement vertical parfait -->
+            <div class="hidden md:flex items-center space-x-8 font-bold text-marti-blue">
+                <a href="#histoire" class="hover:text-marti-orange transition">L'Histoire</a>
+                <a href="#creations" class="hover:text-marti-orange transition">Les Meubles</a>
+                <!-- Lien Instagram Ajouté -->
+                <a href="https://instagram.com/martimeubles/" target="_blank" class="hover:text-marti-orange transition transform hover:scale-110" aria-label="Instagram">
+                    <i data-lucide="instagram" class="w-6 h-6"></i>
+                </a>
+                <a href="#contact" class="px-5 py-2 bg-marti-orange text-white rounded-full hover:bg-marti-purple transition transform hover:scale-105 shadow-md">Me Contacter</a>
+            </div>
+            <!-- Menu mobile simple -->
+            <button class="md:hidden text-marti-blue" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
+                <i data-lucide="menu" class="w-8 h-8"></i>
+            </button>
+        </div>
+        <div id="mobile-menu" class="hidden bg-white border-t p-4 flex flex-col space-y-4 md:hidden text-center font-bold text-marti-blue">
+            <a href="#histoire">L'Histoire</a>
+            <a href="#creations">Les Meubles</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
+        <div class="container mx-auto px-6 flex flex-col items-center text-center relative z-10">
+            
+            <!-- Logo Container with bounce effect -->
+            <!-- MODIFICATION: Suppression de rounded-full, passage à rounded-3xl. Agrandissement w-80 et md:w-[28rem] -->
+            <div class="mb-10 transform hover:scale-105 transition duration-500 ease-in-out">
+                <!-- Utilisation de l'image fournie -->
+                <img src="logo_transparent.png" alt="Logo Marti-Meubles" class="w-80 md:w-[28rem] mx-auto drop-shadow-xl rounded-3xl bg-white/50 p-6 backdrop-blur-sm">
+            </div>
+
+            <h1 class="text-4xl md:text-6xl font-display text-marti-blue mb-4 leading-tight">
+                La tendresse du bois 🪶 <br>
+                <span class="text-marti-orange">à prix raboté 🤏</span>
+            </h1>
+
+            <div class="flex flex-wrap justify-center gap-4 mt-8 text-lg font-semibold text-slate-600">
+                <span class="px-4 py-2 bg-white rounded-full shadow-sm border border-stone-200 flex items-center gap-2">
+                     Original 🦜
+                </span>
+                <span class="px-4 py-2 bg-white rounded-full shadow-sm border border-stone-200 flex items-center gap-2">
+                     Sur-mesure 📏
+                </span>
+            </div>
+        </div>
+
+        <!-- Decorative background blob -->
+        <div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-marti-wood rounded-full opacity-50 blur-3xl -z-10"></div>
+    </header>
+
+    <!-- Citation & Histoire Section -->
+    <section id="histoire" class="py-20 bg-white wood-texture relative">
+        <div class="container mx-auto px-6 max-w-4xl">
+            
+            <div class="text-center mb-16">
+                <span class="text-marti-orange font-display text-xl">Depuis 2023</span>
+                <h2 class="text-4xl font-display text-marti-blue mt-2">La Légende</h2>
+                <div class="w-24 h-1 bg-marti-orange mx-auto mt-4 rounded-full"></div>
+            </div>
+
+            <div class="bg-marti-blue/5 p-8 md:p-12 rounded-3xl relative shadow-inner">
+                <i data-lucide="quote" class="absolute top-8 left-8 text-marti-blue/20 w-16 h-16 transform -scale-x-100"></i>
+                
+                <div class="font-story text-lg md:text-xl text-slate-700 leading-relaxed text-center space-y-6 relative z-10">
+                    <p>
+                        <strong class="text-marti-blue">Marti-Meubles est né sous le crachin breton</strong> au Relecq-Kerhuon en 2023. La légende de Marti-Meubles émane d'un créateur audacieux, <span class="text-marti-orange font-bold">Alexandre M.</span>, qui a su donner une personnalité à ses meubles qui les distinguent de tout autre création.
+                    </p>
+                    <p>
+                        Le savoir-faire et le style de Marti-Meubles sont issus de la finesse des ciseaux à bois, de la fraîcheur d'un esprit libre et de la subtilité des essences de bois utilisées.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Quote Block -->
+            <div class="mt-12 relative">
+                <div class="bg-marti-orange text-white p-8 rounded-tr-3xl rounded-bl-3xl shadow-xl transform rotate-1 hover:rotate-0 transition duration-300 mx-auto max-w-2xl">
+                    <p class="font-story italic text-xl md:text-2xl text-center">
+                        "J'engage mon nom car je suis sûr de la grande qualité de mes meubles et je suis fier de leur style unique."
+                    </p>
+                    <div class="mt-6 flex items-center justify-center gap-4">
+                        <div class="w-12 h-12 bg-white rounded-full flex items-center justify-center text-marti-orange font-bold text-xl font-display">
+                            A
+                        </div>
+                        <div class="text-left">
+                            <div class="font-bold font-display text-lg">Alexandre M.</div>
+                            <div class="text-orange-100 text-sm">Fondateur & Artisan</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Services / Products Preview -->
+    <section id="creations" class="py-20">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-display text-marti-blue">Mes Créations</h2>
+                <p class="text-slate-500 mt-4 font-story italic">Des pièces uniques pour des intérieurs uniques</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Card 1 -->
+                <div class="interactive-card group bg-white p-6 rounded-2xl shadow-lg hover:shadow-2xl transition duration-300 border-b-4 border-marti-blue hover:border-marti-orange">
+                    <div class="h-48 bg-stone-100 rounded-xl mb-4 overflow-hidden relative">
+                         <!-- Image placeholder bois -->
+                        <img src="chaise_bascule.png" alt="Chaise" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                    </div>
+                    <h3 class="text-xl font-bold text-marti-blue mb-2">Chaises à bascule</h3>
+                    <p class="text-slate-600 text-sm">Pour se balancer au rythme des marées.</p>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="interactive-card group bg-white p-6 rounded-2xl shadow-lg hover:shadow-2xl transition duration-300 border-b-4 border-marti-purple hover:border-marti-orange">
+                    <div class="h-48 bg-stone-100 rounded-xl mb-4 overflow-hidden relative">
+                         <img src="table_basse.jpg" alt="Table basse" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                    </div>
+                    <h3 class="text-xl font-bold text-marti-blue mb-2">Tables Basses</h3>
+                    <p class="text-slate-600 text-sm">Le centre de gravité de votre salon.</p>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="interactive-card group bg-white p-6 rounded-2xl shadow-lg hover:shadow-2xl transition duration-300 border-b-4 border-marti-orange hover:border-marti-blue">
+                    <div class="h-48 bg-stone-100 rounded-xl mb-4 overflow-hidden relative">
+                         <img src="gueridon.jpg" alt="Guéridon" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                    </div>
+                    <h3 class="text-xl font-bold text-marti-blue mb-2">Guéridons</h3>
+                    <p class="text-slate-600 text-sm">Petits, pratiques et pleins de caractère.</p>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="interactive-card group bg-white p-6 rounded-2xl shadow-lg hover:shadow-2xl transition duration-300 border-b-4 border-marti-blue hover:border-marti-purple">
+                    <div class="h-48 bg-stone-100 rounded-xl mb-4 overflow-hidden relative flex items-center justify-center bg-stone-200">
+                         <i data-lucide="hammer" class="w-16 h-16 text-marti-blue/50"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-marti-blue mb-2">Entretoises & Divers</h3>
+                    <p class="text-slate-600 text-sm">Des créations techniques et sur-mesure.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action / Contact -->
+    <section id="contact" class="py-20 bg-marti-blue text-white relative overflow-hidden">
+        <!-- Decoration background -->
+        <i data-lucide="armchair" class="absolute -right-10 -bottom-10 w-64 h-64 text-white/5 rotate-12"></i>
+        
+        <div class="container mx-auto px-6 relative z-10 text-center">
+            <h2 class="text-4xl font-display mb-6">Un projet en tête ?</h2>
+            <p class="text-xl mb-10 max-w-2xl mx-auto font-story">
+                Que ce soit pour une demande originale ou un meuble sur-mesure, discutons de votre idée autour d'un morceau de bois.
+            </p>
+            
+            <div class="flex flex-col md:flex-row justify-center gap-6">
+                <a href="mailto:contact@martimeubles.fr" class="flex items-center justify-center gap-3 px-8 py-4 bg-white text-marti-blue font-bold rounded-full hover:bg-marti-orange hover:text-white transition transform hover:-translate-y-1 shadow-lg">
+                    <i data-lucide="mail"></i> Envoyer un Email
+                </a>
+                <button class="flex items-center justify-center gap-3 px-8 py-4 bg-transparent border-2 border-white text-white font-bold rounded-full hover:bg-white/10 transition transform hover:-translate-y-1">
+                    <i data-lucide="phone"></i> 06 00 00 00 00
+                </button>
+            </div>
+            
+            <div class="mt-12 text-sm text-blue-200">
+                <p>📍 Le Relecq-Kerhuon, Bretagne</p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-slate-900 text-slate-400 py-8 text-center">
+        <p class="mb-2">© 2023-2025 Marti-Meubles - Alexandre M.</p>
+        <p class="text-xs">Fait avec ❤️ et de la sciure.</p>
+    </footer>
+
+    <script>
+        // Initialisation des icônes
+        lucide.createIcons();
+    </script>
 </body>
 </html>
